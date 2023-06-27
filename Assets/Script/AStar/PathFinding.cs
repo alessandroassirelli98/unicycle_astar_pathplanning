@@ -13,7 +13,7 @@ public class PathFinding
     private List<PathNode> open_list;
     private List<PathNode> closed_list;
 
-    public float cell_size = .5f;
+    public float cell_size = 3f;
 
     public PathFinding(int width, int height)
     {
@@ -21,7 +21,7 @@ public class PathFinding
         x0 = - height * cell_size / 2;
         z0 = - width * cell_size / 2;
         //grid = new Grid<PathNode>(width, height, cell_size, new Vector3(-Mathf.FloorToInt(width/2), 0, -Mathf.FloorToInt(height / 2)) * cell_size, (Grid<PathNode> g, int x, int z) => new PathNode(g, x, z));
-        grid = new Grid<PathNode>(width, height, cell_size, new Vector3(x0, 0, z0), (Grid<PathNode> g, int x, int z) => new PathNode(g, x, z));
+        grid = new Grid<PathNode>(width, height, cell_size, new Vector3(x0, 0, z0), (Grid<PathNode> g, int x, int z) => new PathNode(g, x, z, cell_size));
     }
 
     public List<PathNode> FindPath(int start_x, int start_z, int end_x, int end_z)

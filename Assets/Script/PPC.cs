@@ -42,7 +42,7 @@ public class PPC : MonoBehaviour
         rightWheel = rightWheelGameObject.GetComponent<WheelCollider>();
         frontWheel = frontWheelGameObject.GetComponent<WheelCollider>();
 
-        path_finding = new PathFinding(150, 100);
+        path_finding = new PathFinding(10, 5);
 
         // Set up the sideways friction of the front wheel
         WheelFrictionCurve sidewaysFriction = new WheelFrictionCurve();
@@ -88,6 +88,12 @@ public class PPC : MonoBehaviour
             Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPositionWithZ();
             path_finding.GetGrid().GetXZ(mouseWorldPosition, out int x, out int z);
             path_finding.GetNode(x, z).SetIsWalkable(!path_finding.GetNode(x, z).is_walkable);
+
+            if (path_finding.GetNode(x, z).is_walkable)
+            {
+                Destroy(path_finding.GetNode(x, z).mark);
+            }
+
             //Debug.Log("Node: " + path_finding.GetNode(x, z).ToString() + " " + path_finding.GetNode(x, z).is_walkable.ToString());
         }
 
@@ -129,7 +135,7 @@ public class PPC : MonoBehaviour
             leftWheel.motorTorque = leftWheel.motorTorque + Kp * e_left;
             rightWheel.motorTorque = rightWheel.motorTorque + Kp * e_right;
         }
-        else { Debug.Log("NO PATH"); }
+        //else { Debug.Log("NO PATH"); }
 
         
 
@@ -140,7 +146,6 @@ public class PPC : MonoBehaviour
             leftWheel.brakeTorque = 100;
             rightWheel.brakeTorque = 100;
         }
-
 
     }
 

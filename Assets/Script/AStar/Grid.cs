@@ -39,7 +39,7 @@ public class Grid<TGridObject> : MonoBehaviour
         {
             for (int z = 0; z < grid_array.GetLength(1); z++)
             {
-                // debug_text_array[x, z] = UtilsClass.CreateWorldText(GetWorldPosition(x, z).ToString(), null, GetWorldPosition(x, z) + new Vector3(cell_size, 1, cell_size) * .5f, 7, Color.white);
+                //debug_text_array[x, z] = UtilsClass.CreateWorldText(GetWorldPosition(x, z).ToString(), null, GetWorldPosition(x, z) + new Vector3(cell_size, 1, cell_size) * .5f, 1, Color.white);
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x+1, z), Color.white, 100f);
             }
@@ -54,6 +54,12 @@ public class Grid<TGridObject> : MonoBehaviour
     {
         return new Vector3(x, 0, z) * cell_size + origin_position;
     }
+
+    public Vector3 GetWorldMidPoint(int x, int z)
+    {
+        return GetWorldPosition(x, z) + new Vector3(0.5f * cell_size, 0, 0.5f * cell_size);
+    }
+
     public void GetXZ(Vector3 world_position, out int x, out int z){
         x = Mathf.FloorToInt((world_position - origin_position).x / cell_size);
         z = Mathf.FloorToInt((world_position - origin_position).z / cell_size);
