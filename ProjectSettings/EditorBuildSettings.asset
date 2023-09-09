@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/menu_3d.unity
+    guid: 2aa189f91bf62524aae2de6cf1379ca5
+  - enabled: 1
+    path: Assets/Scenes/car.unity
+    guid: 79357dbfadeddeb44a2b45acc1452538
+  - enabled: 1
+    path: Assets/Scenes/bicycle.unity
+    guid: 9e587474a1f7549409d265c6ef81a46f
   m_configObjects: {}
